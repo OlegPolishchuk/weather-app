@@ -55,7 +55,7 @@ export const Days = (): ReturnComponentType => {
       <Tabs />
       <div className={s.days}>
         {days.map((day: Day) => (
-          <Card day={day} key={day.icon_id} />
+          <Card day={day} key={day.day} />
         ))}
       </div>
     </>

@@ -7,7 +7,7 @@
   max-width: 750px;
   width: 100%;
 
-  background-color: $lite-background;
+  background-color: var(--components-bg-default);
   box-shadow: $box-shadow;
   border-radius: $border-radius;
 }
@@ -52,7 +52,7 @@
   }
 
   .indicator_value {
-    color: $lite-color;
+    color: var(--text-color-default);
   }
 }
 

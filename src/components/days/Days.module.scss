@@ -8,7 +8,7 @@
   padding: 20px;
   width: 100%;
 
-  background: $lite-background;
+  background: var(--components-bg-default);
   box-shadow: $box-shadow;
   border-radius: 0 0 $border-radius $border-radius;
 }
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
 
-  background: rgba(71,147,255,0.2);
+  background: var(--card-bg-default);
   border-radius: 10px;
 
   padding: 10px;
@@ -28,12 +28,13 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 3px 20px rgba(147,144,144,.28);
+    box-shadow: var(--card-shadow-default);
   }
 
   .day {
     margin-bottom: 7px;
     font-size: 18px;
+    color: var(--text-color-default);
   }
 
   .day_info {
@@ -53,6 +54,7 @@
 
   .day_temp_day {
     font-size: 18px;
+    color: var(--text-color-default);
   }
 
   .day_temp_night {
@@ -79,8 +81,8 @@
   padding: 9px 20px;
   margin-right: 15px;
 
-  background-color: $lite-background;
-  color: $lite-color;
+  background-color: var(--components-bg-default);
+  color: var(--text-color-default);
   font-size: 18px;
 
   display: flex;

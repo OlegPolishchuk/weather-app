@@ -5,7 +5,7 @@
   max-width: 400px;
   width: 100%;
 
-  background: $lite-background;
+  background: var(--components-bg-default);
   box-shadow: $box-shadow;
   border-radius: $border-radius;
 }
@@ -31,7 +31,7 @@
 
   .this_day_name {
     font-size: 40px;
-    color: $lite-color;
+    color: var(--text-color-default);
   }
 }
 

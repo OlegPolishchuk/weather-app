@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -14,6 +16,13 @@
 
 .change_theme, .logo {
   margin-right: 20px;
+  cursor: pointer;
+}
+
+.change_theme {
+  outline: none;
+  border: none;
+  background: transparent;
 }
 
 .logo {
@@ -27,4 +36,5 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 25px;
+  color: $primary_color;
 }
