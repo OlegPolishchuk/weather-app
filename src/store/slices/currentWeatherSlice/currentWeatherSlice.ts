@@ -1,12 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
-  weather: {},
+import { CurrentWeather, Weather } from 'store/slices/currentWeatherSlice/types';
+
+const initialState: CurrentWeather = {
+  weather: {} as Weather,
   isLoading: false,
-  response: {
-    status: 0,
-    message: '',
-  },
+  error: '',
 };
 
 export const currentWeatherSlice = createSlice({
@@ -16,8 +15,14 @@ export const currentWeatherSlice = createSlice({
     fetchCurrentWeather(state) {
       state.isLoading = true;
     },
-    fetchCurrentWeatherSuccess(state, action: any) {
-      state.weather = action;
+    fetchCurrentWeatherSuccess(state, action: PayloadAction<Weather>) {
+      state.weather = action.payload;
+      state.isLoading = false;
+      state.error = '';
+    },
+    fetchCurrentWeatherError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

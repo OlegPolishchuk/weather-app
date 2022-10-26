@@ -1,10 +1,12 @@
 export interface CurrentWeather {
-  weather: any;
+  weather: Weather;
   isLoading: boolean;
-  response: Response;
+  error: string;
 }
 
 export interface Response {
   status: number;
   message: string;
 }
+
+export interface Weather {}
