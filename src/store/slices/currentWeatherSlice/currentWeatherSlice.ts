@@ -3,7 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrentWeather, Weather } from 'store/slices/currentWeatherSlice/types';
 
 const initialState: CurrentWeather = {
-  weather: {} as Weather,
+  weather: {
+    main: {
+      temp: 0,
+      humidity: 0,
+      pressure: 0,
+    },
+    weather: [{ id: 0, main: '', description: '', icon: '' }],
+    name: '',
+  },
   isLoading: false,
   error: '',
 };
@@ -26,3 +34,5 @@ export const currentWeatherSlice = createSlice({
     },
   },
 });
+
+export const currentWeather = currentWeatherSlice.reducer;

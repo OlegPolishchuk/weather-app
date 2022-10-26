@@ -9,4 +9,19 @@ export interface Response {
   message: string;
 }
 
-export interface Weather {}
+export interface Weather {
+  main: {
+    temp: number;
+    humidity: number;
+    pressure: number;
+  };
+  name: string;
+  weather: [
+    {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    },
+  ];
+}
