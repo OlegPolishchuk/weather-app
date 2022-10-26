@@ -13,6 +13,8 @@ interface Props {
 export const ThemeProvider = ({ children, ...props }: Props): ReturnComponentType => {
   const [theme, setTheme] = useState<Theme>(storage.getItem('theme') || Theme.LIGHT);
 
+  changeCssRootVariables(theme);
+
   const changeTheme = (theme: Theme): void => {
     storage.setItem('theme', theme);
     setTheme(theme);
