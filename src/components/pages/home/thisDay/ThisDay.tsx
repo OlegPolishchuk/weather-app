@@ -15,8 +15,6 @@ export const ThisDay = ({ weather }: Props): ReturnComponentType => {
   const temp = roundValue(weather.main.temp);
   const weatherDescription = weather.weather[0];
 
-  console.log(weatherDescription.description);
-
   return (
     <div className={s.this_day}>
       <div className={s.top_block}>
@@ -24,7 +22,9 @@ export const ThisDay = ({ weather }: Props): ReturnComponentType => {
           <div className={s.this_temp}>{temp}&deg;</div>
           <div className={s.this_day_name}>Today</div>
         </div>
-        <GlobalSvgSelector id={weatherDescription.description} />
+        <div title={weatherDescription.description}>
+          <GlobalSvgSelector id={weatherDescription.description} />
+        </div>
       </div>
       <div className={s.bottom_block}>
         <div className={s.this_time}>

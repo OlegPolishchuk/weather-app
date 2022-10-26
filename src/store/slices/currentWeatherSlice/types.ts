@@ -24,4 +24,9 @@ export interface Weather {
       icon: string;
     },
   ];
+  wind: {
+    speed: number;
+    deg: number;
+    gust: number;
+  };
 }

@@ -11,6 +11,11 @@ const initialState: CurrentWeather = {
     },
     weather: [{ id: 0, main: '', description: '', icon: '' }],
     name: '',
+    wind: {
+      deg: 0,
+      gust: 0,
+      speed: 0,
+    },
   },
   isLoading: false,
   error: '',
