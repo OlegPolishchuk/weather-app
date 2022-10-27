@@ -43,7 +43,6 @@ export const Days = (): ReturnComponentType => {
   const allWeatherData = useAppSelector(selectDaysWeatherData);
   const days = useAppSelector(selectTabsWeatherData);
 
-  console.log(`days`, days);
   useEffect(() => {
     const dataForTabs = getCardsByTab(currentTub, allWeatherData);
 

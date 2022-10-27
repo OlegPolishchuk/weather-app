@@ -8,6 +8,10 @@ export const DotPreloader = (): ReturnComponentType => {
     margin: '0 auto',
   };
 
+  const color = getComputedStyle(document.documentElement).getPropertyValue(
+    '--text-color-default',
+  );
+
   return (
     <div style={style}>
       <svg
@@ -20,7 +24,7 @@ export const DotPreloader = (): ReturnComponentType => {
         enableBackground="new 0 0 0 0"
         xmlSpace="preserve"
       >
-        <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+        <circle fill={color} stroke="none" cx="6" cy="50" r="6">
           <animate
             attributeName="opacity"
             dur="1s"
@@ -29,7 +33,7 @@ export const DotPreloader = (): ReturnComponentType => {
             begin="0.1"
           />
         </circle>
-        <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
+        <circle fill={color} stroke="none" cx="26" cy="50" r="6">
           <animate
             attributeName="opacity"
             dur="1s"
@@ -38,7 +42,7 @@ export const DotPreloader = (): ReturnComponentType => {
             begin="0.2"
           />
         </circle>
-        <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
+        <circle fill={color} stroke="none" cx="46" cy="50" r="6">
           <animate
             attributeName="opacity"
             dur="1s"
