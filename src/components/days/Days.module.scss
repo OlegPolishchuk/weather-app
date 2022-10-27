@@ -112,6 +112,7 @@
 }
 
 .tab {
+  text-decoration: none;
   &.active {
     background: $primary_color;
     color: #fff;

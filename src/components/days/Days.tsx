@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import s from './Days.module.scss';
 
 import { Card } from 'components/days/Card';
 import { Tabs } from 'components/days/Tabs';
+import { DotPreloader } from 'components/preloaders/dotPreloader/DotPreloader';
+import { TabsValue } from 'enums';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import {
+  selectAllTabs,
   selectCurrentTub,
   selectDaysWeatherData,
   selectTabsWeatherData,
@@ -18,10 +21,29 @@ import { getCardsByTab } from 'utils/getCardsByTab';
 export const Days = (): ReturnComponentType => {
   const dispatch = useAppDispatch();
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChangeTab = (tab: TabsValue): void => {
+    if (tab === currentTub) return;
+
+    const k = 1000;
+    const delay = Math.random() * k;
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      dispatch(daysWeatherSlice.actions.changeCurrentTab(tab));
+
+      setIsLoading(false);
+    }, delay);
+  };
+
+  const tabs = useAppSelector(selectAllTabs);
   const currentTub = useAppSelector(selectCurrentTub);
   const allWeatherData = useAppSelector(selectDaysWeatherData);
   const days = useAppSelector(selectTabsWeatherData);
 
+  console.log(`days`, days);
   useEffect(() => {
     const dataForTabs = getCardsByTab(currentTub, allWeatherData);
 
@@ -30,15 +52,19 @@ export const Days = (): ReturnComponentType => {
 
   return (
     <>
-      <Tabs />
+      <Tabs tabs={tabs} callback={handleChangeTab} currentTab={currentTub} />
       <div className={s.days}>
-        <div className={s.days_wrapper}>
-          <div className={s.days_wrapper_inner}>
-            {days.map((day: DaysWeather) => (
-              <Card day={day} key={day.dt} />
-            ))}
+        {isLoading ? (
+          <DotPreloader />
+        ) : (
+          <div className={s.days_wrapper}>
+            <div className={s.days_wrapper_inner}>
+              {days.map((day: DaysWeather) => (
+                <Card day={day} key={day.dt} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

@@ -5,8 +5,8 @@ import { DaysWeather, DaysWeatherData } from 'store/slices/currentWeatherSlice/t
 import { DaysWeatherState } from 'store/slices/daysWeatherSlice/types';
 
 const initialState: DaysWeatherState = {
-  currentTub: TabsValue.FiveDays,
-  tabs: [TabsValue.FiveDays, TabsValue.ThreeDays],
+  currentTub: TabsValue.ThreeDays,
+  tabs: [TabsValue.ThreeDays, TabsValue.FiveDays],
   weatherData: {},
   tabsWeatherData: [],
 };
@@ -21,6 +21,10 @@ export const daysWeatherSlice = createSlice({
 
     setTabsWeatherData(state, action: PayloadAction<DaysWeather[]>) {
       state.tabsWeatherData = action.payload;
+    },
+
+    changeCurrentTab(state, action: PayloadAction<TabsValue>) {
+      state.currentTub = action.payload;
     },
   },
 });

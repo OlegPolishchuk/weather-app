@@ -2,29 +2,37 @@ import React from 'react';
 
 import s from './Days.module.scss';
 
-import { ReturnComponentType, Tab } from 'types';
+import { TabsValue } from 'enums';
+import { ReturnComponentType } from 'types';
 
-export const Tabs = (): ReturnComponentType => {
-  const tabs: Tab[] = [
-    {
-      value: 'На неделю',
-    },
-    {
-      value: 'На 10 дней',
-    },
-    {
-      value: 'На месяц',
-    },
-  ];
+interface Props {
+  currentTab: TabsValue;
+  tabs: TabsValue[];
+  callback: (tab: TabsValue) => void;
+}
+
+export const Tabs = ({ tabs, currentTab, callback }: Props): ReturnComponentType => {
+  const handleChangeTab = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    tab: TabsValue,
+  ): void => {
+    e.preventDefault();
+    callback(tab);
+  };
 
   return (
     <div className={s.tabs}>
       <div className={s.tabs_wrapper}>
         {tabs.map(tab => {
           return (
-            <div className={s.tab} key={tab.value}>
-              {tab.value}
-            </div>
+            <a
+              href="/"
+              className={`${s.tab} ${tab === currentTab ? s.active : ''}`}
+              key={tab}
+              onClick={e => handleChangeTab(e, tab)}
+            >
+              {tab}
+            </a>
           );
         })}
       </div>

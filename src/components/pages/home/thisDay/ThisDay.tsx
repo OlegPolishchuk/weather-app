@@ -28,6 +28,7 @@ export const ThisDay = ({ weather }: Props): ReturnComponentType => {
         </div>
         <div title={weatherDescription.description}>
           <GlobalSvgSelector id={weatherDescription.description} />
+          <div className={s.this_day_description}>{weatherDescription.description}</div>
         </div>
       </div>
       <div className={s.bottom_block}>

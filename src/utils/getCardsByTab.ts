@@ -21,8 +21,6 @@ export const getCardsByTab = (tab: string, allData: DaysWeatherData): DaysWeathe
     case TabsValue.FiveDays:
       if (props.length) {
         for (let i = 0; i < fiveDaysCount; i += 1) {
-          console.log(allData[props[i]]);
-
           result.push(...allData[props[i]]);
         }
       }
