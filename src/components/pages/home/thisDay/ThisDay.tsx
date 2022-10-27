@@ -7,6 +7,8 @@ import { Weather } from 'store/slices/currentWeatherSlice/types';
 import { ReturnComponentType } from 'types';
 import { roundValue } from 'utils/roundValue';
 
+const sliceLastIndex = -3;
+
 interface Props {
   weather: Weather;
 }
@@ -14,6 +16,8 @@ interface Props {
 export const ThisDay = ({ weather }: Props): ReturnComponentType => {
   const temp = roundValue(weather.main.temp);
   const weatherDescription = weather.weather[0];
+
+  const time = new Date().toLocaleTimeString().slice(0, sliceLastIndex);
 
   return (
     <div className={s.this_day}>
@@ -28,7 +32,7 @@ export const ThisDay = ({ weather }: Props): ReturnComponentType => {
       </div>
       <div className={s.bottom_block}>
         <div className={s.this_time}>
-          time: <span>21:54</span>
+          time: <span>{time}</span>
         </div>
         <div className={s.this_city}>{weather.name}</div>
       </div>

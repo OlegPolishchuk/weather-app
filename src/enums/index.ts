@@ -1,4 +1,2 @@
-export enum Theme {
-  LIGHT = 'light',
-  DARK = 'dark',
-}
+export { Theme } from './Theme';
+export { TabsValue } from 'enums/TabsValue';

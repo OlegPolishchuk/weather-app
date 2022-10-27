@@ -1,7 +1,5 @@
 export interface CurrentWeather {
   weather: Weather;
-  isLoading: boolean;
-  error: string;
 }
 
 export interface Response {
@@ -29,4 +27,13 @@ export interface Weather {
     deg: number;
     gust: number;
   };
+}
+
+export interface DaysWeather extends Weather {
+  dt: number;
+  dt_txt: string;
+}
+
+export interface DaysWeatherData {
+  [key: string]: DaysWeather[];
 }

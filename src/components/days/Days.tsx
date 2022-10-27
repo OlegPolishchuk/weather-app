@@ -1,62 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import s from './Days.module.scss';
 
 import { Card } from 'components/days/Card';
 import { Tabs } from 'components/days/Tabs';
-import { Day, ReturnComponentType } from 'types';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import {
+  selectCurrentTub,
+  selectDaysWeatherData,
+  selectTabsWeatherData,
+} from 'store/selectors';
+import { DaysWeather } from 'store/slices/currentWeatherSlice/types';
+import { daysWeatherSlice } from 'store/slices/daysWeatherSlice/daysWeatherSlice';
+import { ReturnComponentType } from 'types';
+import { getCardsByTab } from 'utils/getCardsByTab';
 
 export const Days = (): ReturnComponentType => {
-  const days: Day[] = [
-    {
-      day: 'Сегодня',
-      day_info: '24 октября',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
-    },
-    {
-      day: 'Завтра',
-      day_info: '25 октября',
-      icon_id: 'small_rain_sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Небольшоай дождь',
-    },
-    {
-      day: 'Ср',
-      day_info: '26 октября',
-      icon_id: 'small_rain',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'небольшой дождь',
-    },
-    {
-      day: 'Чт',
-      day_info: '27 октября',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
-    },
-    {
-      day: 'Пт',
-      day_info: '24 октября',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
-    },
-  ];
+  const dispatch = useAppDispatch();
+
+  const currentTub = useAppSelector(selectCurrentTub);
+  const allWeatherData = useAppSelector(selectDaysWeatherData);
+  const days = useAppSelector(selectTabsWeatherData);
+
+  useEffect(() => {
+    const dataForTabs = getCardsByTab(currentTub, allWeatherData);
+
+    dispatch(daysWeatherSlice.actions.setTabsWeatherData(dataForTabs));
+  }, [currentTub, allWeatherData]);
 
   return (
     <>
       <Tabs />
       <div className={s.days}>
-        {days.map((day: Day) => (
-          <Card day={day} key={day.day} />
-        ))}
+        <div className={s.days_wrapper}>
+          <div className={s.days_wrapper_inner}>
+            {days.map((day: DaysWeather) => (
+              <Card day={day} key={day.dt} />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
