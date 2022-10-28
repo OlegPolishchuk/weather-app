@@ -21,7 +21,8 @@ $card-box-shadow-light: 0 3px 20px rgba(147,144,144,0.28);
 $card-box-shadow-dark: 0 3px 20px rgba(5,5,5,0.28);
 
 $scrollbar-bg: rgba(224, 224, 224, 0.28);
-$scrollbar-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+$scrollbar-shadow-light: inset 0 0 6px rgba(0, 0, 0, 0.3);
+$scrollbar-shadow-dark: inset 0 0 20px rgba(255, 255, 255, 0.3);
 
 // variables css
 :root {
@@ -49,4 +50,9 @@ $scrollbar-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   --text-color-dark: #{$dark-color};
   --text-color-light: #{$light-color};
   --text-color-default: var(#{--text-color-light});
+
+  // scroll
+  --scroll-thumb-shadow-light: #{$scrollbar-shadow-light};
+  --scroll-thumb-shadow-dark: #{$scrollbar-shadow-dark};
+  --scroll-thumb-shadow-default: var(#{--scroll-thumb-shadow-light}) ;
 }

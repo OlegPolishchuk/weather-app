@@ -30,7 +30,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    box-shadow: $scrollbar-shadow;
+    box-shadow: var(--scroll-thumb-shadow-default);
     border-radius: 5px;
   }
 }
