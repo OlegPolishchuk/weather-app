@@ -6,17 +6,25 @@ import s from './Header.module.scss';
 
 import { GlobalSvgSelector } from 'assets/images/icons/global/globalSvgSelector';
 import { Theme } from 'enums';
-import { useTheme } from 'hooks';
+import { useAppDispatch, useAppSelector, useTheme } from 'hooks';
+import { selectCities, selectCurrentCity } from 'store/selectors';
+import { appSlice } from 'store/slices/appSlice/appSlice';
+import { City } from 'store/slices/appSlice/types';
 import { ReturnComponentType } from 'types';
 
-const options = [
-  { value: 'city-1', label: 'Санкт-Петербург' },
-  { value: 'city-2', label: 'Москва' },
-  { value: 'city-3', label: 'Новгород' },
-];
+// const options = [
+//   { value: 'city-1', label: 'Санкт-Петербург' },
+//   { value: 'city-2', label: 'Москва' },
+//   { value: 'city-3', label: 'Новгород' },
+// ];
 
 export const Header = (): ReturnComponentType => {
+  const dispatch = useAppDispatch();
+
   const theme = useTheme();
+
+  const cities = useAppSelector(selectCities);
+  const currentCity = useAppSelector(selectCurrentCity);
 
   const colorStyles = {
     control: (styles: any) => ({
@@ -38,6 +46,12 @@ export const Header = (): ReturnComponentType => {
     theme.changeTheme(theme.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
   };
 
+  const handleChangeOption = (option: City | null): void => {
+    if (option) {
+      dispatch(appSlice.actions.setCurrentCity(option));
+    }
+  };
+
   return (
     <header className={s.header}>
       <div className={s.wrapper}>
@@ -50,7 +64,12 @@ export const Header = (): ReturnComponentType => {
         <button type="button" className={s.change_theme} onClick={handleChangeTheme}>
           <GlobalSvgSelector id="change-theme" />
         </button>
-        <Select defaultValue={options[0]} options={options} styles={colorStyles} />
+        <Select
+          onChange={handleChangeOption}
+          defaultValue={currentCity}
+          options={cities}
+          styles={colorStyles}
+        />
       </div>
     </header>
   );
