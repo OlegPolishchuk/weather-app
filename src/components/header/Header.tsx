@@ -7,16 +7,11 @@ import s from './Header.module.scss';
 import { GlobalSvgSelector } from 'assets/images/icons/global/globalSvgSelector';
 import { Theme } from 'enums';
 import { useAppDispatch, useAppSelector, useTheme } from 'hooks';
+import { storage } from 'model/storage';
 import { selectCities, selectCurrentCity } from 'store/selectors';
 import { appSlice } from 'store/slices/appSlice/appSlice';
 import { City } from 'store/slices/appSlice/types';
 import { ReturnComponentType } from 'types';
-
-// const options = [
-//   { value: 'city-1', label: 'Санкт-Петербург' },
-//   { value: 'city-2', label: 'Москва' },
-//   { value: 'city-3', label: 'Новгород' },
-// ];
 
 export const Header = (): ReturnComponentType => {
   const dispatch = useAppDispatch();
@@ -47,6 +42,8 @@ export const Header = (): ReturnComponentType => {
   };
 
   const handleChangeOption = (option: City | null): void => {
+    storage.setItem('currentCity', option);
+
     if (option) {
       dispatch(appSlice.actions.setCurrentCity(option));
     }
@@ -67,6 +64,7 @@ export const Header = (): ReturnComponentType => {
         <Select
           onChange={handleChangeOption}
           defaultValue={currentCity}
+          value={currentCity}
           options={cities}
           styles={colorStyles}
         />

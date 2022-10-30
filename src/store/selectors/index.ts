@@ -6,3 +6,4 @@ export { selectDaysWeatherData } from './selectDaysWeatherData/selectDaysWeather
 export { selectTabsWeatherData } from 'store/selectors/selectTabsWeatherData/selectTabsWeatherData';
 export { selectCities } from './selectCities/selectCities';
 export { selectCurrentCity } from './selectCurrentCity/selectCurrentCity';
+export { selectIsInitialized } from './selectIsInitialized/selectIsInitialized';

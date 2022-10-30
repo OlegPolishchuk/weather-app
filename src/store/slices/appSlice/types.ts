@@ -3,6 +3,8 @@ export interface AppInitialState {
   error: string;
   cities: City[];
   currentCity: City;
+  isInitialized: boolean;
+  isCityInitialized: boolean;
 }
 
 export interface City {

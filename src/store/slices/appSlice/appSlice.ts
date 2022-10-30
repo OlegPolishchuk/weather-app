@@ -19,19 +19,21 @@ const initialState: AppInitialState = {
       value: 'Vitebsk',
     },
     {
-      label: 'Gomel',
-      value: 'Gomel',
+      label: 'Homyel',
+      value: 'Homyel',
     },
     {
-      label: 'Grodno',
-      value: 'Grodno',
+      label: 'Hrodna',
+      value: 'Hrodna',
     },
     {
       label: 'Mogilev',
       value: 'Mogilev',
     },
   ],
-  currentCity: { value: 'Minsk', label: 'Minsk' },
+  currentCity: { value: '', label: '' },
+  isInitialized: false,
+  isCityInitialized: false,
 };
 
 export const appSlice = createSlice({
@@ -47,6 +49,14 @@ export const appSlice = createSlice({
 
     setCurrentCity(state, action: PayloadAction<City>) {
       state.currentCity = action.payload;
+    },
+
+    setIsInitialized(state, action: PayloadAction<boolean>) {
+      state.isInitialized = action.payload;
+    },
+
+    setIsCityInitialized(state, action: PayloadAction<boolean>) {
+      state.isCityInitialized = action.payload;
     },
   },
 });

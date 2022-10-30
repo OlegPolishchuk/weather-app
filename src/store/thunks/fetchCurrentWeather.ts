@@ -11,6 +11,7 @@ export const fetchCurrentWeather = (city: string) => async (dispatch: AppDispatc
     const res = await WeatherAPI.getCurrentWeather(city);
 
     dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(res));
+    dispatch(appSlice.actions.setIsInitialized(true));
   } catch (e) {
     const error = e as AxiosError;
 
