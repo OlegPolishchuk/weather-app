@@ -2,7 +2,6 @@
 
 .this_day_info {
   position: relative;
-  z-index: 10;
 
   padding: 40px;
   max-width: 750px;
@@ -15,7 +14,7 @@
 
 .item {
   position: relative;
-  z-index: 10;
+  z-index: 2;
 
   display: flex;
   align-items: center;
