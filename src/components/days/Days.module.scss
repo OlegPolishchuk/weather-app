@@ -140,3 +140,9 @@
 .cancel {
   margin-right: 0;
 }
+
+@media (max-width: $size-sm) {
+  .tabs {
+    padding: 0 10px;
+  }
+}

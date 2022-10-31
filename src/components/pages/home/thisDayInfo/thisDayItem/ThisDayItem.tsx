@@ -17,7 +17,7 @@ export const ThisDayItem = ({ item }: Props): ReturnComponentType => {
       <div className={s.indicator}>
         <IndicatorSvgSelector id={icon_id} />
       </div>
-      <div className={s.indicator_name}>{name}</div>
+      <div className={s.indicator_name}>{name}:</div>
       <div className={s.indicator_value}>{value}</div>
     </div>
   );
