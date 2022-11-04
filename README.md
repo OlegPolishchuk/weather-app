@@ -10,6 +10,10 @@
 - [Redux Toolkit](https://redux-toolkit.js.org)
 - [axios](https://axios-http.com/ru/)
 
+#### для удобства написания кода использовались:
+- [prettier](https://prettier.io)
+- [esLint](https://eslint.org)
+
 Что бы запустить приложение, пропишите:
 
 ### `yarn start`
