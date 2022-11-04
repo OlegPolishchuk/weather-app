@@ -34,5 +34,5 @@ export class WeatherAPI {
 }
 
 function getGeocodeUrl(city: string): string {
-  return `http://api.openweathermap.org/geo/1.0/direct?q={${city}&appid=${process.env.REACT_APP_API_KEY}`;
+  return `https://api.openweathermap.org/geo/1.0/direct?q={${city}&appid=${process.env.REACT_APP_API_KEY}`;
 }
