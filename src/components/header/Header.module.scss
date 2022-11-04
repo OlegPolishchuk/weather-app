@@ -39,6 +39,10 @@
   color: $primary_color;
 }
 
+#react-select-3-listbox {
+  z-index: 99;
+}
+
 @media (max-width: $size-sm) {
   .header {
     flex-direction: column;

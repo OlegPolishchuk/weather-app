@@ -29,11 +29,14 @@ export const Header = (): ReturnComponentType => {
       height: '37px',
       border: 'none',
       borderRadius: '10px',
-      zIndex: '10',
     }),
     singleValue: (styles: any) => ({
       ...styles,
       color: theme.theme === Theme.DARK ? '#fff' : '#333',
+    }),
+    menu: (styles: any) => ({
+      ...styles,
+      zIndex: '100',
     }),
   };
 
